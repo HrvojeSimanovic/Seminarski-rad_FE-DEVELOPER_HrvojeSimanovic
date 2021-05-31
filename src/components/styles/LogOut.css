@@ -1,0 +1,32 @@
+.logout {
+  grid-area: logout;
+  display: flex;
+  margin: 1em;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  box-shadow: 0px 0px 15px 2px #d6d6d67a;
+  border-radius: 20px;
+}
+
+.logoutButton {
+  width: 50%;
+  height: 50%;
+  color: #ff0000;
+  border: none;
+  background-color: transparent;
+}
+
+.logoutButton:hover {
+  background-color: #fafafa83;
+  border-radius: 15px;
+}
+
+.fa-power-off {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 120%;
+}

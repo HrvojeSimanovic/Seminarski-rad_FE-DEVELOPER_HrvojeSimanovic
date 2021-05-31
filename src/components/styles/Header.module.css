@@ -1,0 +1,12 @@
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  background-color: #7119c4;
+  border-radius: 20px;
+  color: white;
+  font: 2em "Lora", serif;
+  box-shadow: 0px -10px 15px 2px #d6d6d67a;
+}
