@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: flex-end;
   margin: 10px;
-  padding: 20px;
+  padding: 1em;
   box-shadow: 0px 0px 15px 2px #d6d6d67a;
   overflow: auto;
 }
@@ -42,7 +42,7 @@
   max-width: 70%;
   background-color: #501296;
   border-radius: 1em;
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
 
 .feedMessage_text {
@@ -71,4 +71,46 @@
 .feedMessage_time_My {
   color: #ffffff;
   font-size: 0.7em;
+}
+
+@media (max-width: 769px) {
+  .feed {
+    padding: 0.8em;
+  }
+  .feedMessage_name,
+  .feedMessage_name_My {
+    font-size: 1em;
+  }
+  .feedMessage_text,
+  .feedMessage_text_My {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 481px) {
+  .feed {
+    padding: 0.6em;
+  }
+  .feedMessage_name,
+  .feedMessage_name_My {
+    font-size: 0.8em;
+  }
+  .feedMessage_text,
+  .feedMessage_text_My {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 320px) {
+  .feed {
+    padding: 0.4em;
+  }
+  .feedMessage_name,
+  .feedMessage_name_My {
+    font-size: 0.6em;
+  }
+  .feedMessage_text,
+  .feedMessage_text_My {
+    font-size: 0.6em;
+  }
 }

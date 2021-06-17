@@ -8,5 +8,24 @@
   border-radius: 20px;
   color: white;
   font: 2em "Lora", serif;
+  text-align: center;
   box-shadow: 0px -10px 15px 2px #d6d6d67a;
+}
+
+@media (max-width: 769px) {
+  .header {
+    font: 1.3em "Lora", serif;
+  }
+}
+
+@media (max-width: 481px) {
+  .header {
+    font: 0.8em "Lora", serif;
+  }
+}
+
+@media (max-width: 320px) {
+  .header {
+    font: 0.6em "Lora", serif;
+  }
 }
