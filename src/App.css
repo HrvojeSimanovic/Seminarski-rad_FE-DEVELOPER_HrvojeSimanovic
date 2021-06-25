@@ -14,15 +14,39 @@
 }
 
 .app_chat {
-  width: 50vw;
+  width: 55vw;
   height: 80vh;
   display: grid;
   grid-template-rows: 10% 80% 10%;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 25% 75%;
   grid-template-areas:
     "header header"
-    "mainFeed mainFeed"
+    "listOfUsers mainFeed"
     "logout inputFeed";
   box-shadow: 0px 0px 15px 2px #d6d6d67a;
   border-radius: 20px;
+}
+
+@media (max-width: 769px) {
+  .app_chat {
+    width: 75vw;
+    height: 90vh;
+    grid-template-columns: 30% 70%;
+  }
+}
+
+@media (max-width: 481px) {
+  .app_chat {
+    width: 98vw;
+    height: 98vh;
+    grid-template-columns: 35% 65%;
+  }
+}
+
+@media (max-width: 320px) {
+  .app_chat {
+    width: 98vw;
+    height: 98vh;
+    grid-template-columns: 40% 60%;
+  }
 }

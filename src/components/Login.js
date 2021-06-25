@@ -12,6 +12,7 @@ const Login = ({ dispatch }) => {
       setIsValid(false);
       return;
     }
+
     dispatch({
       type: "LOGGING",
       payload: username,
@@ -24,7 +25,7 @@ const Login = ({ dispatch }) => {
     <form className={styles.form}>
       <h4 className={styles.welcomeMessage}>Welcome to chat</h4>
       <input
-        className={`${styles["input"]} ${!isValid && styles.input_invalid}`}
+        className={`${styles["input"]} ? ${!isValid && styles.input_invalid}`}
         type="text"
         name="name"
         id="username_input"

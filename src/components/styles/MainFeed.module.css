@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  margin: 10px;
+  margin: 10px 5px 10px 0px;
   padding: 1em;
   box-shadow: 0px 0px 15px 2px #d6d6d67a;
   overflow: auto;
@@ -42,11 +42,11 @@
   max-width: 70%;
   background-color: #501296;
   border-radius: 1em;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .feedMessage_text {
-  background-color: rgba(90, 22, 22, 0.856);
+  background-color: #5a161688;
 }
 
 .feedMessage_name,
@@ -75,7 +75,7 @@
 
 @media (max-width: 769px) {
   .feed {
-    padding: 0.8em;
+    padding: 1em;
   }
   .feedMessage_name,
   .feedMessage_name_My {
@@ -89,7 +89,7 @@
 
 @media (max-width: 481px) {
   .feed {
-    padding: 0.6em;
+    padding: 0.8em;
   }
   .feedMessage_name,
   .feedMessage_name_My {
@@ -103,7 +103,7 @@
 
 @media (max-width: 320px) {
   .feed {
-    padding: 0.4em;
+    padding: 0.6em;
   }
   .feedMessage_name,
   .feedMessage_name_My {

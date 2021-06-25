@@ -30,7 +30,6 @@ const InputNewMessage = ({ dispatch, userName }) => {
       />
       <button type="button" onClick={addMessage} className={styles.button}>
         <i class="far fa-paper-plane"></i>
-        {/* Send */}
       </button>
     </div>
   );

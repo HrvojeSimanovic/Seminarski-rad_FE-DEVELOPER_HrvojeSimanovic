@@ -14,7 +14,7 @@
 
 .logoutButton {
   width: 50%;
-  height: 50%;
+  height: 100%;
   color: #ff0000;
   border: none;
   background-color: transparent;
@@ -23,6 +23,7 @@
 .logoutButton:hover {
   background-color: #fafafa42;
   border-radius: 15px;
+  height: 90%;
 }
 
 .fa-power-off {
@@ -31,23 +32,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2em;
+  font-size: 100%;
 }
 
-@media (max-width: 769px) {
+/* @media (max-width: 769px) {
   .fa-power-off {
-    font-size: 1em;
+    font-size: 100%;
   }
 }
 
 @media (max-width: 481px) {
   .fa-power-off {
-    font-size: 0.8em;
+    font-size: 100%;
   }
 }
 
 @media (max-width: 320px) {
   .fa-power-off {
-    font-size: 0.6em;
+    font-size: 100%;
   }
-}
+} */
