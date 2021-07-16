@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { SET_LOGIN_NAME } from "../helpers/actions/action_types";
 import styles from "./styles/Login.module.css";
 
-const Login = ({ dispatch }) => {
+const Login = () => {
   const [isValid, setIsValid] = useState(true);
+  const dispatch = useDispatch();
 
   const loigInHandler = (e) => {
     e.preventDefault();
@@ -14,7 +17,7 @@ const Login = ({ dispatch }) => {
     }
 
     dispatch({
-      type: "LOGGING",
+      type: SET_LOGIN_NAME,
       payload: username,
     });
 

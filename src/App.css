@@ -17,11 +17,12 @@
   width: 55vw;
   height: 80vh;
   display: grid;
-  grid-template-rows: 10% 80% 10%;
+  grid-template-rows: 10% 40% 40% 10%;
   grid-template-columns: 25% 75%;
   grid-template-areas:
     "header header"
     "listOfUsers mainFeed"
+    "rooms mainFeed"
     "logout inputFeed";
   box-shadow: 0px 0px 15px 2px #d6d6d67a;
   border-radius: 20px;

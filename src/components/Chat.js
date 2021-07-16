@@ -1,31 +1,34 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import {
+  MEMBERS,
+  ADD_MESSAGE,
+  MEMBER_JOIN,
+  MEMBER_LEAVE,
+} from "../helpers/actions/action_types";
 
 import Header from "./Header";
 import MainFeed from "./MainFeed";
 import ListOfUsers from "./ListOfUsers";
+import Rooms from "./Rooms";
 import InputNewMessage from "./InputNewMessage";
 import LogOut from "./LogOut";
 
-export default class Chat extends Component {
+class Chat extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      messages: [],
-      members: [],
-    };
   }
 
   dispatch = ({ type, payload }) => {
     switch (type) {
-      case "ADDING_MESSAGE": {
+      case "PUBLISH": {
         return this.drone.publish({
-          room: "observable-general_room",
+          room: "observable-general",
           message: payload,
         });
       }
       default:
-        return this.state;
+        return;
     }
   };
 
@@ -41,32 +44,44 @@ export default class Chat extends Component {
         return console.error(error);
       }
 
-      this.room.on("members", (m) => {
-        this.setState({ members: m });
+      this.room.on("members", (member) => {
+        this.props.membersAction({
+          type: MEMBERS,
+          payload: member,
+        });
       });
 
       this.room.on("member_join", (member) => {
-        this.state.members.push(member);
+        this.props.memberJoinAction({
+          type: MEMBER_JOIN,
+          payload: member,
+        });
       });
 
       this.room.on("member_leave", ({ id }) => {
-        this.index = this.state.members.findIndex((member) => member.id === id);
-        this.state.members.splice(this.index, 1);
+        const filteredMembers = this.props.members.filter((member) => {
+          return member.id !== id;
+        });
+        this.props.memberLeaveAction({
+          type: MEMBER_LEAVE,
+          payload: filteredMembers,
+        });
+      });
+
+      this.room.on("data", (data, member) => {
+        this.props.addMessageAction({
+          type: ADD_MESSAGE,
+          payload: { data, member },
+        });
       });
     });
 
-    this.room = this.drone.subscribe("observable-general_room");
+    this.room = this.drone.subscribe("observable-general");
 
     this.room.on("open", (error) => {
       if (error) {
         return console.error(error);
       }
-    });
-
-    this.room.on("message", (message) => {
-      this.setState({
-        messages: [...this.state.messages, message.data],
-      });
     });
   }
 
@@ -74,17 +89,38 @@ export default class Chat extends Component {
     return (
       <>
         <Header />
-        <ListOfUsers ListOfUsers={this.state.members} />
-        <MainFeed
-          listOfMessages={this.state.messages}
-          userName={this.props.userName}
-        />
-        <InputNewMessage
-          dispatch={this.dispatch}
-          userName={this.props.userName}
-        />
+        <ListOfUsers />
+        <Rooms />
+        <MainFeed />
+        <InputNewMessage dispatch={this.dispatch} />
         <LogOut />
       </>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    userName: state.loginName.loginName,
+    members: state.generalRoom.members,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    membersAction: (data) => {
+      dispatch({ type: MEMBERS, payload: data.payload });
+    },
+    addMessageAction: (data) => {
+      dispatch({ type: ADD_MESSAGE, payload: data.payload });
+    },
+    memberJoinAction: (data) => {
+      dispatch({ type: MEMBER_JOIN, payload: data.payload });
+    },
+    memberLeaveAction: (data) => {
+      dispatch({ type: MEMBER_LEAVE, payload: data.payload });
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);

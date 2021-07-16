@@ -9,7 +9,7 @@ const LogOut = () => {
   return (
     <div className="logout">
       <button className="logoutButton">
-        <i class="fas fa-power-off" onClick={refreshHandler}></i>
+        <i className="fas fa-power-off" onClick={refreshHandler}></i>
       </button>
     </div>
   );

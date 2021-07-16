@@ -1,43 +1,36 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import "./App.css";
 import Chat from "./components/Chat";
 import Login from "./components/Login";
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loginName: false,
-    };
-  }
-
-  dispatch = ({ type, payload }) => {
-    switch (type) {
-      case "LOGGING": {
-        return this.setState({
-          loginName: payload,
-        });
-      }
-      default:
-        return this.state;
-    }
-  };
+class App extends Component {
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     return (
       <div className="App">
         <div className="app_welcome">
-          {this.state.loginName ? (
+          {this.props.loginName.loginName ? (
             <div className="app_chat">
-              <Chat userName={this.state.loginName} />
+              <Chat userName={this.props.loginName.loginName} />
             </div>
           ) : (
-            <Login dispatch={this.dispatch} />
+            <Login />
           )}
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    loginName: state.loginName,
+  };
+};
+
+export default connect(mapStateToProps)(App);

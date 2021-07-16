@@ -1,10 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
 import styles from "./styles/ListOfUsers.module.css";
 
-const ListOfUsers = ({ ListOfUsers }) => {
+const ListOfUsers = () => {
+  const ListOfUsers = useSelector((state) => state.generalRoom.members);
   return (
     <div className={styles.usersFeed}>
-      <i class="fas fa-users" style={{ color: "#1eff00be" }}>
+      <i className="fas fa-users" style={{ color: "#1eff00be" }}>
         <span className={styles.usersFeedTitle}> Online</span>
       </i>
       <hr />

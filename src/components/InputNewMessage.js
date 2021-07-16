@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styles from "./styles/Input.module.css";
 
-const InputNewMessage = ({ dispatch, userName }) => {
+const InputNewMessage = ({ dispatch }) => {
   const [inputIsValid, setinputIsValid] = useState(true);
 
-  const addMessage = () => {
+  const addNewMessage = () => {
     let messageInput = document.getElementById("input").value;
 
     if (messageInput.trim().length === 0) {
@@ -16,10 +16,11 @@ const InputNewMessage = ({ dispatch, userName }) => {
     const currentTime = new Date().toTimeString().slice(0, 5);
 
     dispatch({
-      type: "ADDING_MESSAGE",
-      payload: { name: userName, time: currentTime, text: messageInput },
+      type: "PUBLISH",
+      payload: { text: messageInput, time: currentTime },
     });
   };
+
   return (
     <div className={styles.inputFeed}>
       <input
@@ -28,8 +29,8 @@ const InputNewMessage = ({ dispatch, userName }) => {
         name="input"
         id="input"
       />
-      <button type="button" onClick={addMessage} className={styles.button}>
-        <i class="far fa-paper-plane"></i>
+      <button type="button" onClick={addNewMessage} className={styles.button}>
+        <i className="far fa-paper-plane"></i>
       </button>
     </div>
   );
